@@ -9,6 +9,11 @@ var alumnosRouter = require('./routes/alumnos');
 
 var app = express();
 
+app.all('/tests', function (req, res, next) {
+  console.log('Todos los verbos caben aquí ...');
+  console.log(app._router.stack);
+  next();
+});
 app.use('/', indexRouter);
 app.use('/alumnos', alumnosRouter);
 
@@ -28,10 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   next(createError(404));
 });
-app.all('/tests', function (req, res, next) {
-  console.log('Todos los verbos caben aquí ...');
-  next();
-});
+
 
 // error handler
 app.use(function(err, req, res, next) {
