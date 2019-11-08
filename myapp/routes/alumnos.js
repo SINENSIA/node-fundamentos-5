@@ -31,3 +31,11 @@ router.post('/:nombre/:edad', function(req,res,next) {
 });
 
 module.exports = router;
+
+
+router.get('/:id', function(req, res, next) {
+  res.send('Buscamos y presentamos el alumno ' + req.params.id);
+});
+router.post('/:id', function(req, res, next) {
+  res.send('Buscamos y presentamos el alumno ' + req.params.id);
+});
